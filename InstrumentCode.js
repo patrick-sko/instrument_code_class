@@ -15,7 +15,6 @@ class InstrumentationPerLine {
 }
 
 class InstrumentCode {
-
   constructor() {
     /** @type {boolean} */
     this.hasReportSent = false;
@@ -24,9 +23,10 @@ class InstrumentCode {
   }
 
   /**
-   * The instrumentCode function which is the instrumentation functon that will be called during
-   * program execution. It gathers all the data in the reportData variable defined above.
-   * 
+   * The instrumentCode function which is the instrumentation functon that will
+   * be called during program execution. It gathers all the data in the
+   * reportData variable defined above.
+   *
    * @param {string} param
    * @param {number} lineNumber
    * @param {number} colNumber
@@ -76,17 +76,19 @@ class InstrumentCode {
     this.reportData.forEach((value, key) => {
       const tempObj = {param: key, lineMapping: []};
       value.forEach((value, key) => {tempObj.lineMapping.push({
-                                  lineNo: key,
-                                  colNumberArray: value.colNumberArray,
-                                  frequency: value.frequency
-                                })})
+                      lineNo: key,
+                      colNumberArray: value.colNumberArray,
+                      frequency: value.frequency
+                    })})
       reportJson.push(tempObj);
     })
 
     return reportJson;
   }
 
-  /** Sends or prints the profiling data collected. */
+  /**
+   * Sends or prints the profiling data collected.
+   */
   sendCoverageData() {
     this.hasReportSent = true;
 
